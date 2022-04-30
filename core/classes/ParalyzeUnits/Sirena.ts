@@ -3,10 +3,12 @@ import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Paralyzer } from "../../behavior/type/paralyzer";
 import { Unit } from "../Unit";
 import { ParalyzeUnit } from "./ParalyzeUnit";
+import { v4 as uuidv4 } from "uuid";
 
 export class Sirena extends ParalyzeUnit {
   constructor() {
     super(
+      uuidv4(),
       "Serena",
       80,
       80,
@@ -17,7 +19,7 @@ export class Sirena extends ParalyzeUnit {
       new Paralyzer()
     );
   }
-  doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[] {
+  doAction(allUnits: Unit[], currentUnit: string): Unit[] {
     return this.paralyzeEnemy(allUnits, currentUnit);
   }
 }

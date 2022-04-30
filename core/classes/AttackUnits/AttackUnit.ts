@@ -9,6 +9,7 @@ export abstract class AttackUnit extends Unit {
   private _targets: ITypeBehavior;
 
   constructor(
+    _id: string,
     _name: string,
     _healthPoint: number,
     _fullHealthPoint: number,
@@ -20,6 +21,7 @@ export abstract class AttackUnit extends Unit {
     _targets: ITypeBehavior
   ) {
     super(
+      _id,
       _name,
       _healthPoint,
       _fullHealthPoint,
@@ -40,7 +42,7 @@ export abstract class AttackUnit extends Unit {
     this._damage = value;
   }
 
-  attackEnemy(allUnits: Unit[], currentUnit: Unit[]) {
+  attackEnemy(allUnits: Unit[], currentUnit: string) {
     const enemies = this._targets.getTargets(allUnits, currentUnit);
     this._action.makeMove(enemies, this._damage);
 

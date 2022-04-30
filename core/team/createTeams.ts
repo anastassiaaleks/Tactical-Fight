@@ -1,8 +1,9 @@
 import { Unit } from "./../classes/Unit";
 import { UnitFactory } from "../classes/UnitFactory";
 import { unitList } from "../classes/UnitFactory";
+import { ITeams } from "../interfaces/ITeams";
 
-export const createTeams = () => {
+export const createTeams = (): ITeams => {
   const unitNumber = 12;
 
   const firstTeam: Unit[] = [];

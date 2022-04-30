@@ -3,10 +3,12 @@ import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Attack } from "../../behavior/action/Attack";
 import { Melee } from "../../behavior/type/melee";
 import { Unit } from "../Unit";
+import { v4 as uuidv4 } from "uuid";
 
 export class Skeleton extends AttackUnit {
   constructor() {
     super(
+      uuidv4(),
       "Skeleton",
       100,
       100,
@@ -18,7 +20,7 @@ export class Skeleton extends AttackUnit {
       new Melee()
     );
   }
-  doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[] {
+  doAction(allUnits: Unit[], currentUnit: string): Unit[] {
     return this.attackEnemy(allUnits, currentUnit);
   }
 }

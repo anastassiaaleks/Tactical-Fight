@@ -8,6 +8,7 @@ export abstract class ParalyzeUnit extends Unit {
   private _targets: ITypeBehavior;
 
   constructor(
+    _id: string,
     _name: string,
     _healthPoint: number,
     _fullHealthPoint: number,
@@ -18,6 +19,7 @@ export abstract class ParalyzeUnit extends Unit {
     _targets: ITypeBehavior
   ) {
     super(
+      _id,
       _name,
       _healthPoint,
       _fullHealthPoint,
@@ -28,7 +30,7 @@ export abstract class ParalyzeUnit extends Unit {
     this._action = _action;
     this._targets = _targets;
   }
-  paralyzeEnemy(allUnits: Unit[], currentUnit: Unit[]) {
+  paralyzeEnemy(allUnits: Unit[], currentUnit: string) {
     const enemies = this._targets.getTargets(allUnits, currentUnit);
     this._action.makeMove(enemies);
 

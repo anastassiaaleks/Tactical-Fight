@@ -3,6 +3,7 @@ import { IDefendBehavior } from "../interfaces/defendBehavior";
 
 export abstract class Unit {
   constructor(
+    private _id: string,
     private _name: string,
     private _healthPoint: number,
     private _fullHealthPoint: number,
@@ -13,6 +14,10 @@ export abstract class Unit {
 
   get healthPoint(): number {
     return this._healthPoint;
+  }
+
+  get id(): string {
+    return this._id;
   }
 
   set healthPoint(value: number) {
@@ -55,5 +60,5 @@ export abstract class Unit {
     return this._defended.defense(damage);
   }
 
-  abstract doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[];
+  abstract doAction(allUnits: Unit[], currentUnit: string): Unit[];
 }

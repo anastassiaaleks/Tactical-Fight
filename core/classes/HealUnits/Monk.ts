@@ -3,10 +3,12 @@ import { HealUnit } from "./HealUnit";
 import { Heal } from "../../behavior/action/Heal";
 import { HealerSingle } from "../../behavior/type/healerSingle";
 import { Unit } from "../Unit";
+import { v4 as uuidv4 } from "uuid";
 
 export class Monk extends HealUnit {
   constructor() {
     super(
+      uuidv4(),
       "Monk",
       90,
       90,
@@ -18,7 +20,7 @@ export class Monk extends HealUnit {
       new HealerSingle()
     );
   }
-  doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[] {
+  doAction(allUnits: Unit[], currentUnit: string): Unit[] {
     return this.healAllies(allUnits, currentUnit);
   }
 }

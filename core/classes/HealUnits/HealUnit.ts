@@ -9,6 +9,7 @@ export abstract class HealUnit extends Unit {
   private _targets: ITypeBehavior;
 
   constructor(
+    _id: string,
     _name: string,
     _healthPoint: number,
     _fullHealthPoint: number,
@@ -20,6 +21,7 @@ export abstract class HealUnit extends Unit {
     _targets: ITypeBehavior
   ) {
     super(
+      _id,
       _name,
       _healthPoint,
       _fullHealthPoint,
@@ -56,7 +58,7 @@ export abstract class HealUnit extends Unit {
     this._targets = value;
   }
 
-  healAllies(allUnits: Unit[], currentUnit: Unit[]) {
+  healAllies(allUnits: Unit[], currentUnit: string) {
     const allies = this._targets.getTargets(allUnits, currentUnit);
     this._action.makeMove(allies, this._heal);
 
