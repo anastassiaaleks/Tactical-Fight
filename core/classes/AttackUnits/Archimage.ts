@@ -1,20 +1,20 @@
 import { AttackUnit } from "./AttackUnit";
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Attack } from "../../behavior/action/Attack";
-import { Melee } from "../../behavior/type/melee";
+import { Mage } from "../../behavior/type/mage";
 
-export class Skeleton extends AttackUnit {
+export class Archimage extends AttackUnit {
   constructor() {
     super(
-      "Skeleton",
-      100,
-      100,
-      50,
+      "Archimage",
+      90,
+      90,
+      40,
       false,
-      25,
+      30,
       new UnDefended(),
       new Attack(),
-      new Melee()
+      new Mage()
     );
   }
 }

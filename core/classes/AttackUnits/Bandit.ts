@@ -1,12 +1,12 @@
 import { AttackUnit } from "./AttackUnit";
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Attack } from "../../behavior/action/Attack";
-import { Melee } from "../../behavior/type/melee";
+import { Range } from "../../behavior/type/range";
 
-export class Skeleton extends AttackUnit {
+export class Bandit extends AttackUnit {
   constructor() {
     super(
-      "Skeleton",
+      "Bandit",
       100,
       100,
       50,
@@ -14,7 +14,7 @@ export class Skeleton extends AttackUnit {
       25,
       new UnDefended(),
       new Attack(),
-      new Melee()
+      new Range()
     );
   }
 }

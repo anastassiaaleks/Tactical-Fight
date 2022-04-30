@@ -1,10 +1,12 @@
 import { IActionBehavior } from "../../interfaces/actionBehavior";
 import { IDefendBehavior } from "../../interfaces/defendBehavior";
+import { ITypeBehavior } from "../../interfaces/typeBehavior";
 import { Unit } from "../Unit";
 
 export abstract class HealUnit extends Unit {
   private _heal: number;
   private _action: IActionBehavior;
+  private _targets: ITypeBehavior;
 
   constructor(
     _name: string,
@@ -14,7 +16,8 @@ export abstract class HealUnit extends Unit {
     _isParalyzed: boolean,
     _heal: number,
     _defended: IDefendBehavior,
-    _action: IActionBehavior
+    _action: IActionBehavior,
+    _targets: ITypeBehavior
   ) {
     super(
       _name,
@@ -26,6 +29,7 @@ export abstract class HealUnit extends Unit {
     );
     this._heal = _heal;
     this._action = _action;
+    this._targets = _targets;
   }
 
   get heal(): number {
@@ -44,8 +48,18 @@ export abstract class HealUnit extends Unit {
     this._action = value;
   }
 
-  healAllies(allies: Unit[]) {
+  get targets(): ITypeBehavior {
+    return this._targets;
+  }
+
+  set targets(value: ITypeBehavior) {
+    this._targets = value;
+  }
+
+  healAllies(allUnits: Unit[], currentUnit: Unit[]) {
+    const allies = this._targets.getTargets(allUnits, currentUnit);
     this._action.makeMove(allies, this._heal);
+
     return allies;
   }
 }
