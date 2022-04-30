@@ -2,6 +2,7 @@ import { UnDefended } from "../../behavior/defend/UnDefended";
 import { HealUnit } from "./HealUnit";
 import { Heal } from "../../behavior/action/Heal";
 import { HealerMass } from "../../behavior/type/healerMass";
+import { Unit } from "../Unit";
 
 export class Bishop extends HealUnit {
   constructor() {
@@ -16,5 +17,8 @@ export class Bishop extends HealUnit {
       new Heal(),
       new HealerMass()
     );
+  }
+  doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[] {
+    return this.healAllies(allUnits, currentUnit);
   }
 }

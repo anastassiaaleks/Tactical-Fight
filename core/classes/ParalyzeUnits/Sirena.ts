@@ -1,6 +1,7 @@
 import { Paralyze } from "../../behavior/action/Paralyze";
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Paralyzer } from "../../behavior/type/paralyzer";
+import { Unit } from "../Unit";
 import { ParalyzeUnit } from "./ParalyzeUnit";
 
 export class Sirena extends ParalyzeUnit {
@@ -15,5 +16,8 @@ export class Sirena extends ParalyzeUnit {
       new Paralyze(),
       new Paralyzer()
     );
+  }
+  doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[] {
+    return this.paralyzeEnemy(allUnits, currentUnit);
   }
 }

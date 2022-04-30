@@ -2,6 +2,7 @@ import { AttackUnit } from "./AttackUnit";
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Attack } from "../../behavior/action/Attack";
 import { Mage } from "../../behavior/type/mage";
+import { Unit } from "../Unit";
 
 export class Archimage extends AttackUnit {
   constructor() {
@@ -16,5 +17,8 @@ export class Archimage extends AttackUnit {
       new Attack(),
       new Mage()
     );
+  }
+  doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[] {
+    return this.attackEnemy(allUnits, currentUnit);
   }
 }

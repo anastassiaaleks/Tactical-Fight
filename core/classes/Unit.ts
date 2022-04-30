@@ -54,4 +54,6 @@ export abstract class Unit {
   takeDamage(damage: number) {
     return this._defended.defense(damage);
   }
+
+  abstract doAction(allUnits: Unit[], currentUnit: Unit[]): Unit[];
 }
