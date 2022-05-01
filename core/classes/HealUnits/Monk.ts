@@ -20,7 +20,7 @@ export class Monk extends HealUnit {
       new HealerSingle()
     );
   }
-  doAction(allUnits: Unit[], currentUnit: string): Unit[] {
-    return this.healAllies(allUnits, currentUnit);
+  doAction(allUnits: Unit[], currentUnit: string, targetId?: string): Unit[] {
+    return this.healAllies(allUnits, currentUnit, targetId);
   }
 }

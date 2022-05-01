@@ -10,7 +10,7 @@ export const createTeams = (): ITeams => {
   const secondTeam: Unit[] = [];
 
   for (let i = 0; i < unitNumber; i++) {
-    let randomIndex = Math.floor(Math.random() * 8);
+    let randomIndex = Math.floor(Math.random() * 9);
     let createdUnit = UnitFactory.createUnit(unitList[randomIndex]);
 
     if (i < unitNumber / 2) {

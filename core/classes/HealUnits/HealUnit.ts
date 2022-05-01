@@ -58,8 +58,8 @@ export abstract class HealUnit extends Unit {
     this._targets = value;
   }
 
-  healAllies(allUnits: Unit[], currentUnit: string) {
-    const allies = this._targets.getTargets(allUnits, currentUnit);
+  healAllies(allUnits: Unit[], currentUnit: string, targetId?: string) {
+    const allies = this._targets.getTargets(allUnits, currentUnit, targetId);
     this._action.makeMove(allies, this._heal);
 
     return allies;

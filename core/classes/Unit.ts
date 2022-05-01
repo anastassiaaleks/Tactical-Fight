@@ -12,12 +12,16 @@ export abstract class Unit {
     private _defended: IDefendBehavior
   ) {}
 
-  get healthPoint(): number {
-    return this._healthPoint;
-  }
-
   get id(): string {
     return this._id;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  get healthPoint(): number {
+    return this._healthPoint;
   }
 
   set healthPoint(value: number) {
@@ -60,5 +64,9 @@ export abstract class Unit {
     return this._defended.defense(damage);
   }
 
-  abstract doAction(allUnits: Unit[], currentUnit: string): Unit[];
+  abstract doAction(
+    allUnits: Unit[],
+    currentUnit: string,
+    targetId?: string
+  ): Unit[];
 }

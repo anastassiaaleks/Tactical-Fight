@@ -42,8 +42,8 @@ export abstract class AttackUnit extends Unit {
     this._damage = value;
   }
 
-  attackEnemy(allUnits: Unit[], currentUnit: string) {
-    const enemies = this._targets.getTargets(allUnits, currentUnit);
+  attackEnemy(allUnits: Unit[], currentUnit: string, targetId?: string) {
+    const enemies = this._targets.getTargets(allUnits, currentUnit, targetId);
     this._action.makeMove(enemies, this._damage);
 
     return enemies;
