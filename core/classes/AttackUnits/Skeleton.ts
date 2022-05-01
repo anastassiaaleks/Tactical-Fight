@@ -20,7 +20,7 @@ export class Skeleton extends AttackUnit {
       new Melee()
     );
   }
-  doAction(allUnits: Unit[], currentUnit: string): Unit[] {
-    return this.attackEnemy(allUnits, currentUnit);
+  doAction(allUnits: Unit[], currentUnit: string, targetId?: string): Unit[] {
+    return this.attackEnemy(allUnits, currentUnit, targetId);
   }
 }
