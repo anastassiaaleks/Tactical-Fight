@@ -47,6 +47,8 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
               key={uuidv4()}
               team={team}
               changeCurrentUnit={changeCurrentUnit}
+              currentUnit={currentUnit}
+              allUnits={allUnits}
             />
           );
         })}

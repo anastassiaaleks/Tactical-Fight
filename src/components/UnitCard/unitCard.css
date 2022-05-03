@@ -5,6 +5,7 @@
   width: 33%;
   height: 155px;
   text-align: center;
+  cursor: pointer;
 }
 
 .card > img {

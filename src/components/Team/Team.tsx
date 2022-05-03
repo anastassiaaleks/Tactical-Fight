@@ -7,15 +7,29 @@ import "./team.css";
 interface ITeam {
   team: Unit[];
   changeCurrentUnit: () => void;
+  currentUnit: Unit;
+  allUnits: Unit[];
 }
 
-const Team: React.FC<ITeam> = ({ team, changeCurrentUnit }) => {
+const Team: React.FC<ITeam> = ({
+  team,
+  changeCurrentUnit,
+  currentUnit,
+  allUnits,
+}) => {
   return (
     <div className="team">
-      <button onClick={changeCurrentUnit}>click</button>
       <div className="cardContainer">
         {team.map((unit) => {
-          return <UnitCard key={unit.id} unit={unit} />;
+          return (
+            <UnitCard
+              key={unit.id}
+              unit={unit}
+              currentUnit={currentUnit}
+              allUnits={allUnits}
+              changeCurrentUnit={changeCurrentUnit}
+            />
+          );
         })}
       </div>
     </div>
