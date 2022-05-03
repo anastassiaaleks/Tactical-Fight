@@ -1,0 +1,14 @@
+.card {
+  padding: 8px;
+  border: 1px lightgray solid;
+  box-sizing: border-box;
+  width: 33%;
+  height: 155px;
+  text-align: center;
+}
+
+.card > img {
+  width: 80%;
+  height: 90%;
+  object-fit: cover;
+}

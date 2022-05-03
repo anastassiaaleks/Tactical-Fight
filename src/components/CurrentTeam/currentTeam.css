@@ -1,0 +1,16 @@
+.currentUnit {
+  text-align: center;
+  padding: 18px 40px;
+  border: 1px lightblue solid;
+}
+
+.currentUnit > img {
+  max-width: 200px;
+}
+.currentUnit > button {
+  background-color: rgba(215, 175, 175, 0.633);
+  border: none;
+  padding: 4px 10px;
+  width: 100%;
+  cursor: pointer;
+}

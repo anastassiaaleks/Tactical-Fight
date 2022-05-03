@@ -1,0 +1,12 @@
+.battlefield {
+  display: flex;
+  justify-content: space-between;
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.teamContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 50px;
+}

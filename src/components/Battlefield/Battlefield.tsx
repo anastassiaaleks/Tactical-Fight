@@ -3,6 +3,8 @@ import { Unit } from "../../../core/classes/Unit";
 import CurrentTeam from "../CurrentTeam/CurrentTeam";
 import Team from "../Team/Team";
 import { v4 as uuidv4 } from "uuid";
+import GameInfo from "../GameInfo/GameInfo";
+import "./battlefield.css";
 
 interface IBattlefield {
   firstTeam: Unit[];
@@ -31,21 +33,24 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
   const changeCurrentUnit = () => {
     setUnitIndex(
       (prevState) =>
-        (prevState = prevState > allUnits.length - 1 ? 0 : prevState + 1)
+        (prevState = prevState > allUnits.length - 2 ? 0 : prevState + 1)
     );
   };
 
   return (
-    <div>
-      {teams.map((team) => {
-        return (
-          <Team
-            key={uuidv4()}
-            team={team}
-            changeCurrentUnit={changeCurrentUnit}
-          />
-        );
-      })}
+    <div className="battlefield">
+      <GameInfo />
+      <div className="teamContainer">
+        {teams.map((team) => {
+          return (
+            <Team
+              key={uuidv4()}
+              team={team}
+              changeCurrentUnit={changeCurrentUnit}
+            />
+          );
+        })}
+      </div>
       <CurrentTeam currentTeam={currentTeam} currentUnit={currentUnit} />
     </div>
   );
