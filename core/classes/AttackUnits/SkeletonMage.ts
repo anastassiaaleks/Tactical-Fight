@@ -9,7 +9,7 @@ export class SkeletonMage extends AttackUnit {
   constructor() {
     super(
       uuidv4(),
-      "Skeleton mage",
+      "Skeleton Mage",
       50,
       50,
       40,

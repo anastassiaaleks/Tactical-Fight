@@ -9,7 +9,7 @@ export class Sirena extends ParalyzeUnit {
   constructor() {
     super(
       uuidv4(),
-      "Serena",
+      "Sirena",
       80,
       80,
       20,
