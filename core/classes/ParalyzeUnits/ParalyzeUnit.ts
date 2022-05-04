@@ -30,14 +30,6 @@ export abstract class ParalyzeUnit extends Unit {
     this._action = _action;
   }
 
-  // get targets(): ITypeBehavior {
-  //   return this._targets;
-  // }
-
-  // set targets(value: ITypeBehavior) {
-  //   this._targets = value;
-  // }
-
   paralyzeEnemy(allUnits: Unit[], currentUnit: string) {
     const enemies = this.targets.getTargets(allUnits, currentUnit);
     this._action.makeMove(enemies);
