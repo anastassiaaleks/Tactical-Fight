@@ -2,10 +2,11 @@
   padding: 8px;
   border: 1px lightgray solid;
   box-sizing: border-box;
-  width: 33%;
+  width: 31%;
   height: 155px;
   text-align: center;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .card > img {

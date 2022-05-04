@@ -22,8 +22,13 @@ const UnitCard: React.FC<IUnitCard> = ({
     changeCurrentUnit();
   };
 
+  let unitBorder = "1px lightgray solid";
+  if (unit.id === currentUnit.id) {
+    unitBorder = "1px red solid";
+  }
+
   return (
-    <div className="card" onClick={chooseAction}>
+    <div className="card" onClick={chooseAction} style={{ border: unitBorder }}>
       <img src={cardImg(unit.name)} />
       <div>
         {unit.healthPoint} / {unit.fullHealthPoint}
