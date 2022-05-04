@@ -53,7 +53,11 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
           );
         })}
       </div>
-      <CurrentTeam currentTeam={currentTeam} currentUnit={currentUnit} />
+      <CurrentTeam
+        currentTeam={currentTeam}
+        currentUnit={currentUnit}
+        changeCurrentUnit={changeCurrentUnit}
+      />
     </div>
   );
 };

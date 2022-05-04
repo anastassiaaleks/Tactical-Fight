@@ -1,4 +1,5 @@
 import React from "react";
+import { Defended } from "../../../core/behavior/defend/Defended";
 import { Unit } from "../../../core/classes/Unit";
 import { cardImg } from "./../UnitCard/cardImg";
 import "./currentTeam.css";
@@ -6,9 +7,19 @@ import "./currentTeam.css";
 interface ICurrentTeam {
   currentTeam: Unit[];
   currentUnit: Unit;
+  changeCurrentUnit: () => void;
 }
 
-const CurrentTeam: React.FC<ICurrentTeam> = ({ currentTeam, currentUnit }) => {
+const CurrentTeam: React.FC<ICurrentTeam> = ({
+  currentTeam,
+  currentUnit,
+  changeCurrentUnit,
+}) => {
+  const defendItself = () => {
+    currentUnit.defense = new Defended();
+    changeCurrentUnit();
+  };
+
   return (
     <div className="currentUnit">
       <img src={cardImg(currentUnit.name)} />
@@ -16,7 +27,7 @@ const CurrentTeam: React.FC<ICurrentTeam> = ({ currentTeam, currentUnit }) => {
       <p>{currentUnit.healthPoint}</p>
       <p>{currentUnit.fullHealthPoint}</p>
       <p>{currentUnit.initiative}</p>
-      <button>Defend itself</button>
+      <button onClick={defendItself}>Defend itself</button>
     </div>
   );
 };
