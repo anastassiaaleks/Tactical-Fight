@@ -1,5 +1,6 @@
 import { IActionBehavior } from "../interfaces/actionBehavior";
 import { IDefendBehavior } from "../interfaces/defendBehavior";
+import { ITypeBehavior } from "../interfaces/typeBehavior";
 
 export abstract class Unit {
   constructor(
@@ -9,7 +10,8 @@ export abstract class Unit {
     private _fullHealthPoint: number,
     private _initiative: number,
     private _isParalyzed: boolean,
-    private _defended: IDefendBehavior
+    private _defended: IDefendBehavior,
+    private _targets: ITypeBehavior
   ) {}
 
   get id(): string {
@@ -58,6 +60,14 @@ export abstract class Unit {
 
   set defense(value: IDefendBehavior) {
     this._defended = value;
+  }
+
+  get targets(): ITypeBehavior {
+    return this._targets;
+  }
+
+  set targets(value: ITypeBehavior) {
+    this._targets = value;
   }
 
   takeDamage(damage: number) {

@@ -5,7 +5,6 @@ import { Unit } from "../Unit";
 
 export abstract class ParalyzeUnit extends Unit {
   private _action: IActionBehavior;
-  private _targets: ITypeBehavior;
 
   constructor(
     _id: string,
@@ -25,22 +24,22 @@ export abstract class ParalyzeUnit extends Unit {
       _fullHealthPoint,
       _initiative,
       _isParalyzed,
-      _defended
+      _defended,
+      _targets
     );
     this._action = _action;
-    this._targets = _targets;
   }
 
-  get targets(): ITypeBehavior {
-    return this._targets;
-  }
+  // get targets(): ITypeBehavior {
+  //   return this._targets;
+  // }
 
-  set targets(value: ITypeBehavior) {
-    this._targets = value;
-  }
+  // set targets(value: ITypeBehavior) {
+  //   this._targets = value;
+  // }
 
   paralyzeEnemy(allUnits: Unit[], currentUnit: string) {
-    const enemies = this._targets.getTargets(allUnits, currentUnit);
+    const enemies = this.targets.getTargets(allUnits, currentUnit);
     this._action.makeMove(enemies);
 
     return enemies;

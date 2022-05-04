@@ -6,7 +6,6 @@ import { Unit } from "../Unit";
 export abstract class HealUnit extends Unit {
   private _heal: number;
   private _action: IActionBehavior;
-  private _targets: ITypeBehavior;
 
   constructor(
     _id: string,
@@ -27,11 +26,11 @@ export abstract class HealUnit extends Unit {
       _fullHealthPoint,
       _initiative,
       _isParalyzed,
-      _defended
+      _defended,
+      _targets
     );
     this._heal = _heal;
     this._action = _action;
-    this._targets = _targets;
   }
 
   get heal(): number {
@@ -50,16 +49,16 @@ export abstract class HealUnit extends Unit {
     this._action = value;
   }
 
-  get targets(): ITypeBehavior {
-    return this._targets;
-  }
+  // get targets(): ITypeBehavior {
+  //   return this._targets;
+  // }
 
-  set targets(value: ITypeBehavior) {
-    this._targets = value;
-  }
+  // set targets(value: ITypeBehavior) {
+  //   this._targets = value;
+  // }
 
   healAllies(allUnits: Unit[], currentUnit: string, targetId?: string) {
-    const allies = this._targets.getTargets(allUnits, currentUnit, targetId);
+    const allies = this.targets.getTargets(allUnits, currentUnit, targetId);
     this._action.makeMove(allies, this._heal);
 
     return allies;

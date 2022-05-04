@@ -6,7 +6,6 @@ import { Unit } from "../Unit";
 export abstract class AttackUnit extends Unit {
   private _damage: number;
   private _action: IActionBehavior;
-  private _targets: ITypeBehavior;
 
   constructor(
     _id: string,
@@ -27,11 +26,11 @@ export abstract class AttackUnit extends Unit {
       _fullHealthPoint,
       _initiative,
       _isParalyzed,
-      _defended
+      _defended,
+      _targets
     );
     this._damage = _damage;
     this._action = _action;
-    this._targets = _targets;
   }
 
   get damage(): number {
@@ -43,7 +42,7 @@ export abstract class AttackUnit extends Unit {
   }
 
   attackEnemy(allUnits: Unit[], currentUnit: string, targetId?: string) {
-    const enemies = this._targets.getTargets(allUnits, currentUnit, targetId);
+    const enemies = this.targets.getTargets(allUnits, currentUnit, targetId);
     this._action.makeMove(enemies, this._damage);
 
     return enemies;
