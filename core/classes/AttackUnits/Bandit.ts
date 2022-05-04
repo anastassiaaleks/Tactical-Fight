@@ -1,7 +1,7 @@
 import { AttackUnit } from "./AttackUnit";
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Attack } from "../../behavior/action/Attack";
-import { Range } from "../../behavior/type/range";
+import { Range } from "../../behavior/unitTypes/range";
 import { Unit } from "../Unit";
 import { v4 as uuidv4 } from "uuid";
 

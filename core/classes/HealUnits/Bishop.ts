@@ -1,7 +1,7 @@
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { HealUnit } from "./HealUnit";
 import { Heal } from "../../behavior/action/Heal";
-import { HealerMass } from "../../behavior/type/healerMass";
+import { HealerMass } from "../../behavior/unitTypes/healerMass";
 import { Unit } from "../Unit";
 import { v4 as uuidv4 } from "uuid";
 

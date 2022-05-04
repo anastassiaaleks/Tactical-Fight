@@ -1,6 +1,6 @@
 import { Paralyze } from "../../behavior/action/Paralyze";
 import { UnDefended } from "../../behavior/defend/UnDefended";
-import { Paralyzer } from "../../behavior/type/paralyzer";
+import { Paralyzer } from "../../behavior/unitTypes/paralyzer";
 import { Unit } from "../Unit";
 import { ParalyzeUnit } from "./ParalyzeUnit";
 import { v4 as uuidv4 } from "uuid";

@@ -1,7 +1,7 @@
 import { AttackUnit } from "./AttackUnit";
 import { UnDefended } from "../../behavior/defend/UnDefended";
 import { Attack } from "../../behavior/action/Attack";
-import { Melee } from "../../behavior/type/melee";
+import { Melee } from "../../behavior/unitTypes/melee";
 import { Unit } from "../Unit";
 import { v4 as uuidv4 } from "uuid";
 
