@@ -1,11 +1,15 @@
 import { Unit } from "../../classes/Unit";
 import { ITypeBehavior } from "../../interfaces/typeBehavior";
+import { getAliveUnits } from "../../team/getAliveUnits";
 import { getMeleeEnemy } from "../../team/getMeleeEnemy";
 import { getMeleeTarget } from "../../team/getMeleeTarget";
 
 export class Melee implements ITypeBehavior {
   getAvailableTargets(allUnits: Unit[], currentUnit: string) {
-    return getMeleeEnemy(allUnits, currentUnit);
+    const availableTargets = getAliveUnits(
+      getMeleeEnemy(allUnits, currentUnit)
+    );
+    return availableTargets;
   }
 
   getTargets(
@@ -13,7 +17,8 @@ export class Melee implements ITypeBehavior {
     currentUnit: string,
     targetId?: string | undefined
   ) {
-    const target = getMeleeTarget(allUnits, currentUnit, targetId);
+    const enemies = this.getAvailableTargets(allUnits, currentUnit);
+    const target = getMeleeTarget(enemies, targetId);
 
     return target;
   }

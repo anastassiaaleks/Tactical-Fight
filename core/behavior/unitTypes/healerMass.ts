@@ -1,13 +1,13 @@
 import { Unit } from "../../classes/Unit";
 import { ITypeBehavior } from "../../interfaces/typeBehavior";
 import { getCurrentTeam } from "../../team/getCurrentTeam";
+import { getAliveUnits } from "../../team/getAliveUnits";
 
 export class HealerMass implements ITypeBehavior {
   getAvailableTargets(allUnits: Unit[], currentUnit: string) {
-    const availableTargets = getCurrentTeam(allUnits, currentUnit).filter(
-      (target) => target.healthPoint > 0
+    const availableTargets = getAliveUnits(
+      getCurrentTeam(allUnits, currentUnit)
     );
-
     return availableTargets;
   }
 

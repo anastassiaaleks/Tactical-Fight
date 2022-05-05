@@ -1,13 +1,10 @@
 import { Unit } from "../classes/Unit";
-import { getCurrentTeam } from "./getCurrentTeam";
 
 export const getSingleAlly = (
-  allUnits: Unit[],
-  currentUnit: string,
+  availableTargets: Unit[],
   targetId: string | undefined
 ) => {
-  const allyTeam = getCurrentTeam(allUnits, currentUnit);
-  const target = allyTeam.filter((unit) => unit.id === targetId);
+  const target = availableTargets.filter((unit) => unit.id === targetId);
 
   return target;
 };
