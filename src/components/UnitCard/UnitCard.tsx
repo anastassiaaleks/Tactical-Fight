@@ -1,9 +1,10 @@
 import React from "react";
 import { Unit } from "../../../core/classes/Unit";
 import { cardImg } from "./cardImg";
+import { Defended } from "../../../core/behavior/defend/Defended";
 import Poison from "../../img/poison.png";
 import Shield from "../../img/shield.jpg";
-import { Defended } from "../../../core/behavior/defend/Defended";
+import IsDead from "../../img/isDead.png";
 
 import "./unitCard.css";
 
@@ -39,24 +40,38 @@ const UnitCard: React.FC<IUnitCard> = ({
     return false;
   };
 
-  let unitBorder = "1px lightgray solid";
+  const unitBorder =
+    unit.id === currentUnit.id
+      ? "currentUnitBorder"
+      : isTarget() && unit.id !== currentUnit.id
+      ? "targetBorder"
+      : "defaultBorder";
 
-  if (unit.id === currentUnit.id) {
-    unitBorder = "1px red solid";
-  }
+  const classes = "card " + unitBorder;
 
-  if (isTarget() && unit.id !== currentUnit.id) {
-    unitBorder = "1px green solid";
-  }
+  const phIndicatorHeight =
+    unit.healthPoint === 0
+      ? 100
+      : ((unit.fullHealthPoint - unit.healthPoint) / unit.fullHealthPoint) *
+        100;
 
   return (
-    <div className="card" onClick={chooseAction} style={{ border: unitBorder }}>
+    <div className={classes} onClick={chooseAction}>
       <div className="imgContainer">
-        {unit.defense instanceof Defended ? (
+        {unit.defense instanceof Defended && unit.healthPoint !== 0 ? (
           <img className="shieldImg" src={Shield} />
         ) : null}
-        {unit.isParalyze ? <img className="poisonImg" src={Poison} /> : null}
+        {unit.isParalyze && unit.healthPoint !== 0 ? (
+          <img className="poisonImg" src={Poison} />
+        ) : null}
+        {unit.healthPoint === 0 ? (
+          <img className="deadImg" src={IsDead} />
+        ) : null}
         <img className="unitImg" src={cardImg(unit.name)} />
+        <div
+          className="hpIndicator"
+          style={{ height: phIndicatorHeight + `%` }}
+        ></div>
       </div>
       <div>
         {unit.healthPoint} / {unit.fullHealthPoint}
