@@ -1,8 +1,13 @@
 import { Unit } from "../../classes/Unit";
 import { ITypeBehavior } from "../../interfaces/typeBehavior";
+import { getCurrentTeam } from "../../team/getCurrentTeam";
 import { getSingleAlly } from "../../team/getSingleAlly";
 
 export class HealerSingle implements ITypeBehavior {
+  getAvailableTargets(allUnits: Unit[], currentUnit: string) {
+    return getCurrentTeam(allUnits, currentUnit);
+  }
+
   getTargets(
     allUnits: Unit[],
     currentUnit: string,
