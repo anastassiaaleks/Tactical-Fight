@@ -22,9 +22,17 @@
   border-radius: 4px;
 }
 
-.poisonImg {
+.poisonImg,
+.shieldImg {
   position: absolute;
   max-width: 20px;
-  right: 10px;
   top: 2px;
+}
+
+.poisonImg {
+  right: 10px;
+}
+
+.shieldImg {
+  left: 10px;
 }

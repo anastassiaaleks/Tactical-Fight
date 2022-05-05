@@ -2,6 +2,8 @@ import React from "react";
 import { Unit } from "../../../core/classes/Unit";
 import { cardImg } from "./cardImg";
 import Poison from "../../img/poison.png";
+import Shield from "../../img/shield.jpg";
+import { Defended } from "../../../core/behavior/defend/Defended";
 
 import "./unitCard.css";
 
@@ -50,6 +52,9 @@ const UnitCard: React.FC<IUnitCard> = ({
   return (
     <div className="card" onClick={chooseAction} style={{ border: unitBorder }}>
       <div className="imgContainer">
+        {unit.defense instanceof Defended ? (
+          <img className="shieldImg" src={Shield} />
+        ) : null}
         {unit.isParalyze ? <img className="poisonImg" src={Poison} /> : null}
         <img className="unitImg" src={cardImg(unit.name)} />
       </div>

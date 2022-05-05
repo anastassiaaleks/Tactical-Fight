@@ -1,5 +1,6 @@
 import React from "react";
 import { Defended } from "../../../core/behavior/defend/Defended";
+import { UnDefended } from "../../../core/behavior/defend/UnDefended";
 import { Unit } from "../../../core/classes/Unit";
 import { cardImg } from "./../UnitCard/cardImg";
 import "./currentTeam.css";
@@ -15,6 +16,10 @@ const CurrentTeam: React.FC<ICurrentTeam> = ({
   currentUnit,
   changeCurrentUnit,
 }) => {
+  if (currentUnit.defense instanceof Defended) {
+    currentUnit.defense = new UnDefended();
+  }
+
   const defendItself = () => {
     currentUnit.defense = new Defended();
     changeCurrentUnit();
