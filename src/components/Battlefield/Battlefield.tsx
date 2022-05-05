@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Unit } from "../../../core/classes/Unit";
 import CurrentTeam from "../CurrentTeam/CurrentTeam";
 import Team from "../Team/Team";
@@ -31,6 +31,12 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
     unitIndex < halfUnitsLength
       ? allUnits[unitIndex]
       : allUnits[unitIndex - halfUnitsLength];
+
+  useEffect(() => {
+    if (currentUnit.isParalyze || currentUnit.healthPoint === 0) {
+      changeCurrentUnit();
+    }
+  }, [currentUnit]);
 
   const changeCurrentUnit = () => {
     setUnitIndex(

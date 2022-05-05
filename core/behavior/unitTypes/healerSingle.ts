@@ -5,7 +5,11 @@ import { getSingleAlly } from "../../team/getSingleAlly";
 
 export class HealerSingle implements ITypeBehavior {
   getAvailableTargets(allUnits: Unit[], currentUnit: string) {
-    return getCurrentTeam(allUnits, currentUnit);
+    const availableTargets = getCurrentTeam(allUnits, currentUnit).filter(
+      (target) => target.healthPoint > 0
+    );
+
+    return availableTargets;
   }
 
   getTargets(
