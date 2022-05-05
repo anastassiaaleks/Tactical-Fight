@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Unit } from "../../../core/classes/Unit";
 import CurrentTeam from "../CurrentTeam/CurrentTeam";
 import Team from "../Team/Team";
@@ -15,7 +15,6 @@ interface IBattlefield {
 
 const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
   const [unitIndex, setUnitIndex] = useState<number>(0);
-  const [availableTargets, setAvailableTargets] = useState<Unit[]>([]);
 
   const allUnits =
     unitIndex < firstTeam.length
@@ -32,12 +31,6 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
     unitIndex < halfUnitsLength
       ? allUnits[unitIndex]
       : allUnits[unitIndex - halfUnitsLength];
-
-  useEffect(() => {
-    setAvailableTargets(
-      currentUnit.targets.getAvailableTargets(allUnits, currentUnit.id)
-    );
-  }, [currentUnit]);
 
   const changeCurrentUnit = () => {
     setUnitIndex(
@@ -58,7 +51,6 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
               changeCurrentUnit={changeCurrentUnit}
               currentUnit={currentUnit}
               allUnits={allUnits}
-              availableTargets={availableTargets}
             />
           );
         })}

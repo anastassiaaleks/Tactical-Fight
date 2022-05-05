@@ -9,7 +9,6 @@ interface ITeam {
   changeCurrentUnit: () => void;
   currentUnit: Unit;
   allUnits: Unit[];
-  availableTargets: Unit[];
 }
 
 const Team: React.FC<ITeam> = ({
@@ -17,7 +16,6 @@ const Team: React.FC<ITeam> = ({
   changeCurrentUnit,
   currentUnit,
   allUnits,
-  availableTargets,
 }) => {
   return (
     <div className="team">
@@ -29,7 +27,6 @@ const Team: React.FC<ITeam> = ({
               unit={unit}
               currentUnit={currentUnit}
               allUnits={allUnits}
-              availableTargets={availableTargets}
               changeCurrentUnit={changeCurrentUnit}
             />
           );

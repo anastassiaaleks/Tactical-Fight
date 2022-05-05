@@ -9,7 +9,6 @@ interface IUnitCard {
   unit: Unit;
   currentUnit: Unit;
   allUnits: Unit[];
-  availableTargets: Unit[];
   changeCurrentUnit: () => void;
 }
 
@@ -17,7 +16,6 @@ const UnitCard: React.FC<IUnitCard> = ({
   unit,
   currentUnit,
   allUnits,
-  availableTargets,
   changeCurrentUnit,
 }) => {
   const chooseAction = () => {
@@ -26,6 +24,11 @@ const UnitCard: React.FC<IUnitCard> = ({
   };
 
   const isTarget = () => {
+    const availableTargets = currentUnit.targets.getAvailableTargets(
+      allUnits,
+      currentUnit.id
+    );
+
     for (let i = 0; i < availableTargets.length; i++) {
       if (availableTargets[i].id === unit.id) {
         return true;
