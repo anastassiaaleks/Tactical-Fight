@@ -1,6 +1,7 @@
 import React from "react";
 import { Unit } from "../../../core/classes/Unit";
 import { cardImg } from "./cardImg";
+import Poison from "../../img/poison.png";
 
 import "./unitCard.css";
 
@@ -45,7 +46,10 @@ const UnitCard: React.FC<IUnitCard> = ({
 
   return (
     <div className="card" onClick={chooseAction} style={{ border: unitBorder }}>
-      <img src={cardImg(unit.name)} />
+      <div className="imgContainer">
+        {unit.isParalyze ? <img className="poisonImg" src={Poison} /> : null}
+        <img className="unitImg" src={cardImg(unit.name)} />
+      </div>
       <div>
         {unit.healthPoint} / {unit.fullHealthPoint}
       </div>

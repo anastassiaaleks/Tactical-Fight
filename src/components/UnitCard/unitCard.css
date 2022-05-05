@@ -2,15 +2,29 @@
   padding: 8px;
   border: 1px lightgray solid;
   box-sizing: border-box;
-  width: 31%;
-  height: 155px;
+  width: 32%;
+  height: 160px;
   text-align: center;
   cursor: pointer;
   border-radius: 4px;
 }
 
-.card > img {
+.imgContainer {
+  position: relative;
+  width: 100%;
+  height: 85%;
+}
+
+.unitImg {
   width: 80%;
   height: 90%;
   object-fit: cover;
+  border-radius: 4px;
+}
+
+.poisonImg {
+  position: absolute;
+  max-width: 20px;
+  right: 10px;
+  top: 2px;
 }
