@@ -1,5 +1,6 @@
 import { Unit } from "../classes/Unit";
 import { getTeamPosition } from "./getTeamPosition";
+import { includesAliveUnits } from "./includesAliveUnits";
 
 export const getMeleeEnemy = (allUnits: Unit[], currentUnit: string) => {
   const unitPosition = getTeamPosition(allUnits, currentUnit);
@@ -10,18 +11,34 @@ export const getMeleeEnemy = (allUnits: Unit[], currentUnit: string) => {
   const fourthLine = [9, 10, 11];
 
   if (secondLine.includes(unitPosition)) {
-    return [];
+    if (includesAliveUnits(firstLine, allUnits)) {
+      return [];
+    }
+
+    const indexes =
+      unitPosition === 4
+        ? thirdLine
+        : thirdLine.filter((e) => thirdLine.indexOf(e) !== unitPosition - 3);
+
+    const targets = allUnits.filter((unit, i) => indexes.includes(i));
+
+    return targets;
   }
 
   if (firstLine.includes(unitPosition)) {
+    if (!includesAliveUnits(thirdLine, allUnits)) {
+      const targets = allUnits.filter((unit, i) => fourthLine.includes(i));
+      return targets;
+    }
+
     const indexes =
       unitPosition === 1
         ? thirdLine
         : thirdLine.filter((e) => thirdLine.indexOf(e) !== unitPosition);
 
-    const res = allUnits.filter((unit, i) => indexes.includes(i));
+    const targets = allUnits.filter((unit, i) => indexes.includes(i));
 
-    return res;
+    return targets;
   }
   return [];
 };
