@@ -19,7 +19,7 @@ export class Sirena extends ParalyzeUnit {
       new Paralyzer()
     );
   }
-  doAction(allUnits: Unit[], currentUnit: string): Unit[] {
-    return this.paralyzeEnemy(allUnits, currentUnit);
+  doAction(allUnits: Unit[], currentUnit: string, targetId: string): Unit[] {
+    return this.paralyzeEnemy(allUnits, currentUnit, targetId);
   }
 }

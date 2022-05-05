@@ -30,8 +30,8 @@ export abstract class ParalyzeUnit extends Unit {
     this._action = _action;
   }
 
-  paralyzeEnemy(allUnits: Unit[], currentUnit: string) {
-    const enemies = this.targets.getTargets(allUnits, currentUnit);
+  paralyzeEnemy(allUnits: Unit[], currentUnit: string, targetId: string) {
+    const enemies = this.targets.getTargets(allUnits, currentUnit, targetId);
     this._action.makeMove(enemies);
 
     return enemies;

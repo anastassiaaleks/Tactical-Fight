@@ -4,6 +4,8 @@ import CurrentTeam from "../CurrentTeam/CurrentTeam";
 import Team from "../Team/Team";
 import { v4 as uuidv4 } from "uuid";
 import GameInfo from "../GameInfo/GameInfo";
+import { getReverseTeam } from "./getReverseTeam";
+
 import "./battlefield.css";
 
 interface IBattlefield {
@@ -24,7 +26,7 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
 
   const currentTeam = unitIndex < halfUnitsLength ? firstTeam : secondTeam;
   const enemyTeam = unitIndex < halfUnitsLength ? secondTeam : firstTeam;
-  const teams = [currentTeam, enemyTeam];
+  const teams = [currentTeam, getReverseTeam(enemyTeam)];
 
   const currentUnit =
     unitIndex < halfUnitsLength
