@@ -1,6 +1,6 @@
 import { Unit } from "../classes/Unit";
 
-export const getSingleAlly = (
+export const getSingleTarget = (
   availableTargets: Unit[],
   targetId: string | undefined
 ) => {

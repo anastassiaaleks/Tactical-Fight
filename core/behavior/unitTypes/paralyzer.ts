@@ -2,7 +2,7 @@ import { Unit } from "../../classes/Unit";
 import { ITypeBehavior } from "../../interfaces/typeBehavior";
 import { getAliveUnits } from "../../team/getAliveUnits";
 import { getEnemyTeam } from "../../team/getEnemyTeam";
-import { getSingleEnemy } from "../../team/getSingleEnemy";
+import { getSingleTarget } from "../../team/getSingleTarget";
 
 export class Paralyzer implements ITypeBehavior {
   getAvailableTargets(allUnits: Unit[], currentUnit: string) {
@@ -16,7 +16,7 @@ export class Paralyzer implements ITypeBehavior {
     targetId?: string | undefined
   ) {
     const availableTargets = this.getAvailableTargets(allUnits, currentUnit);
-    const target = getSingleEnemy(availableTargets, targetId);
+    const target = getSingleTarget(availableTargets, targetId);
 
     return target;
   }

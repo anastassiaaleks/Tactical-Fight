@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Unit } from "../../../core/classes/Unit";
-import CurrentUnit from "../CurrentTeam/CurrentUnit";
+import CurrentUnit from "../CurrentUnit/CurrentUnit";
 import Team from "../Team/Team";
 import { v4 as uuidv4 } from "uuid";
 import GameInfo from "../GameInfo/GameInfo";
