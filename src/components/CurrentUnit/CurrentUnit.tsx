@@ -3,7 +3,7 @@ import { Defended } from "../../../core/behavior/defend/Defended";
 import { UnDefended } from "../../../core/behavior/defend/UnDefended";
 import { Unit } from "../../../core/classes/Unit";
 import { hpIndicator } from "../../functions/hpIndicator";
-import { cardImg } from "../UnitCard/cardImg";
+import { cardImg } from "../UnitImg/cardImg";
 import "./currentUnit.css";
 
 interface ICurrentUnit {
