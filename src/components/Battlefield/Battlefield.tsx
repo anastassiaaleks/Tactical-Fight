@@ -15,6 +15,7 @@ interface IBattlefield {
 
 const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
   const [unitIndex, setUnitIndex] = useState<number>(0);
+  const [round, setRound] = useState<number>(1);
 
   const allUnits =
     unitIndex < firstTeam.length
@@ -38,7 +39,16 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
     }
   }, [currentUnit]);
 
+  useEffect(() => {
+    enemyTeam.forEach((unit) => {
+      unit.isParalyze = false;
+    });
+  }, [currentTeam[0].id]);
+
   const changeCurrentUnit = () => {
+    if (unitIndex > allUnits.length - 2) {
+      setRound((prevState) => (prevState = prevState + 1));
+    }
     setUnitIndex(
       (prevState) =>
         (prevState = prevState > allUnits.length - 2 ? 0 : prevState + 1)
