@@ -2,6 +2,7 @@ import React from "react";
 import { Defended } from "../../../core/behavior/defend/Defended";
 import { UnDefended } from "../../../core/behavior/defend/UnDefended";
 import { Unit } from "../../../core/classes/Unit";
+import { hpIndicator } from "../../functions/hpIndicator";
 import { cardImg } from "./../UnitCard/cardImg";
 import "./currentTeam.css";
 
@@ -25,14 +26,26 @@ const CurrentTeam: React.FC<ICurrentTeam> = ({
     changeCurrentUnit();
   };
 
+  const hpIndicatorWidth = 100 - hpIndicator(currentUnit);
+
   return (
     <div className="currentUnit">
-      <img src={cardImg(currentUnit.name)} />
+      <div className="currentImgContainer">
+        <img className="currentImg" src={cardImg(currentUnit.name)} />
+      </div>
+      <div className="hpDiv">
+        <div
+          className="currentHp"
+          style={{ width: hpIndicatorWidth + `%` }}
+        ></div>
+        <p>
+          {currentUnit.healthPoint} / {currentUnit.fullHealthPoint}
+        </p>
+      </div>
       <p>{currentUnit.name}</p>
-      <p>{currentUnit.healthPoint}</p>
-      <p>{currentUnit.fullHealthPoint}</p>
-      <p>{currentUnit.initiative}</p>
-      <button onClick={defendItself}>Defend itself</button>
+      <button className="defendBtn" onClick={defendItself}>
+        Defend itself
+      </button>
     </div>
   );
 };

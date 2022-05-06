@@ -2,6 +2,7 @@ import React from "react";
 import { Unit } from "../../../core/classes/Unit";
 import { cardImg } from "./cardImg";
 import { Defended } from "../../../core/behavior/defend/Defended";
+import { hpIndicator } from "../../functions/hpIndicator";
 import Poison from "../../img/poison.png";
 import Shield from "../../img/shield.jpg";
 import IsDead from "../../img/isDead.png";
@@ -49,11 +50,7 @@ const UnitCard: React.FC<IUnitCard> = ({
 
   const classes = "card " + unitBorder;
 
-  const phIndicatorHeight =
-    unit.healthPoint === 0
-      ? 100
-      : ((unit.fullHealthPoint - unit.healthPoint) / unit.fullHealthPoint) *
-        100;
+  const hpIndicatorHeight = hpIndicator(unit);
 
   return (
     <div className={classes} onClick={chooseAction}>
@@ -70,7 +67,7 @@ const UnitCard: React.FC<IUnitCard> = ({
         <img className="unitImg" src={cardImg(unit.name)} />
         <div
           className="hpIndicator"
-          style={{ height: phIndicatorHeight + `%` }}
+          style={{ height: hpIndicatorHeight + `%` }}
         ></div>
       </div>
       <div>
