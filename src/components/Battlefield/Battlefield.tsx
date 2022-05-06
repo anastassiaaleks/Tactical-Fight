@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Unit } from "../../../core/classes/Unit";
-import CurrentTeam from "../CurrentTeam/CurrentTeam";
+import CurrentUnit from "../CurrentTeam/CurrentUnit";
 import Team from "../Team/Team";
 import { v4 as uuidv4 } from "uuid";
 import GameInfo from "../GameInfo/GameInfo";
@@ -71,8 +71,7 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
           );
         })}
       </div>
-      <CurrentTeam
-        currentTeam={currentTeam}
+      <CurrentUnit
         currentUnit={currentUnit}
         changeCurrentUnit={changeCurrentUnit}
       />

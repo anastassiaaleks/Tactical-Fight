@@ -3,17 +3,15 @@ import { Defended } from "../../../core/behavior/defend/Defended";
 import { UnDefended } from "../../../core/behavior/defend/UnDefended";
 import { Unit } from "../../../core/classes/Unit";
 import { hpIndicator } from "../../functions/hpIndicator";
-import { cardImg } from "./../UnitCard/cardImg";
-import "./currentTeam.css";
+import { cardImg } from "../UnitCard/cardImg";
+import "./currentUnit.css";
 
-interface ICurrentTeam {
-  currentTeam: Unit[];
+interface ICurrentUnit {
   currentUnit: Unit;
   changeCurrentUnit: () => void;
 }
 
-const CurrentTeam: React.FC<ICurrentTeam> = ({
-  currentTeam,
+const CurrentUnit: React.FC<ICurrentUnit> = ({
   currentUnit,
   changeCurrentUnit,
 }) => {
@@ -50,4 +48,4 @@ const CurrentTeam: React.FC<ICurrentTeam> = ({
   );
 };
 
-export default CurrentTeam;
+export default CurrentUnit;
