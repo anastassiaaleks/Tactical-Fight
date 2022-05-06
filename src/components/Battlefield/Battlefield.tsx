@@ -57,7 +57,7 @@ const Battlefield: React.FC<IBattlefield> = ({ firstTeam, secondTeam }) => {
 
   return (
     <div className="battlefield">
-      <GameInfo />
+      <GameInfo round={round} />
       <div className="teamContainer">
         {teams.map((team) => {
           return (

@@ -1,10 +1,14 @@
 import React from "react";
 
-const GameInfo = () => {
+interface IGameInfo {
+  round: number;
+}
+
+const GameInfo: React.FC<IGameInfo> = ({ round }) => {
   return (
     <div>
       <p>GameInfo</p>
-      <p>round</p>
+      <p>Round: {round}</p>
     </div>
   );
 };
